@@ -12,7 +12,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState({ type: '', text: '' });
 
-  
   useEffect(() => {
     loadExpenses();
   }, [filters]);
@@ -74,53 +73,61 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-3">
-            <div className="bg-blue-600 p-2 rounded-lg">
-              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <header className="bg-white shadow sticky top-0 z-10  border-b-4 border-gray-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-2 md:p-2.5 rounded-xl shadow-md">
+                <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h1 className="text-xl md:text-3xl font-bold text-gray-900">Expense Tracker</h1>
+                <p className="text-xs md:text-sm text-gray-600 hidden sm:block">Manage your finances with ease</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Personal Expense Tracker</h1>
-              <p className="text-gray-600 mt-1">Manage your expenses efficiently</p>
+            
+            <div className="hidden md:flex items-center gap-4">
+              <div className="text-right">
+                <p className="text-xs text-gray-500 font-medium italic">
+                "Money talks, but mine only says goodbye."
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Message Alert */}
+
       {message.text && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-          <div className={`p-4 rounded-lg ${
+          <div className={`p-3 md:p-4 rounded-lg shadow-sm animate-fade-in ${
             message.type === 'success' 
               ? 'bg-green-50 text-green-800 border border-green-200' 
               : 'bg-red-50 text-red-800 border border-red-200'
           }`}>
             <div className="flex items-center gap-2">
               {message.type === 'success' ? (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               )}
-              <span className="font-medium">{message.text}</span>
+              <span className="font-medium text-sm md:text-base">{message.text}</span>
             </div>
           </div>
         </div>
       )}
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Form and List */}
-          <div className="lg:col-span-2 space-y-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+
+          <div className="lg:col-span-2 space-y-4 md:space-y-6">
             <ExpenseForm 
               onSubmit={handleCreateOrUpdate}
               editingExpense={editingExpense}
@@ -137,23 +144,51 @@ function App() {
             />
           </div>
 
-          {/* Right Column - Summary */}
+
           <div className="lg:col-span-1">
-            <div className="sticky top-6">
-              <ExpenseSummary filters={filters} />
+            <div className="lg:sticky lg:top-24">
+              <ExpenseSummary 
+                filters={filters} 
+                expenseCount={expenses.length}
+              />
             </div>
           </div>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
+      <footer className="bg-white border-t border-gray-200 mt-8 md:mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <p className="text-center text-gray-600 text-sm">
-            Built with React, Express, MongoDB & Tailwind CSS
-          </p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2">
+            <p className="text-gray-600 text-xs md:text-sm">
+              © 2025 Expense Tracker. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 text-xs md:text-sm text-gray-500">
+              <span className="flex items-center gap-1">
+                <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
+               Evaao
+              </span>
+              
+            
+            </div>
+          </div>
         </div>
       </footer>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
