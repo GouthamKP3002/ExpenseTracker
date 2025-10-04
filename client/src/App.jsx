@@ -164,11 +164,9 @@ function App() {
             </p>
             <div className="flex items-center gap-4 text-xs md:text-sm text-gray-500">
               <span className="flex items-center gap-1">
-                <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
-               Evaao
-              </span>
-              
-            
+                <span className="inline-block w-2 h-2 bg-blue-500 rounded-full"></span>
+               KP16
+              </span>            
             </div>
           </div>
         </div>
