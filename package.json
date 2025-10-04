@@ -10,7 +10,16 @@
     "build": "cd client && npm run build",
     "start": "node server/server.js"
   },
-  "keywords": ["expense", "tracker", "mongodb", "react"],
+  "keywords": [
+    "expense",
+    "tracker",
+    "mongodb",
+    "react"
+  ],
   "author": "Goutham",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "mongoose": "^8.19.0"
+  }
 }
