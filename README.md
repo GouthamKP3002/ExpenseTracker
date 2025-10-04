@@ -176,7 +176,7 @@ Before you begin, ensure you have:
 
 ```bash
 # Using Git
-git clone <your-repository-url>
+git clone https://github.com/GouthamKP3002/ExpenseTracker
 cd expense-tracker
 
 # Or download and extract the ZIP file
