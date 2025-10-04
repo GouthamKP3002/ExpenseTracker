@@ -8,7 +8,8 @@ export default defineConfig({
   port: 3000,
   server: {
     proxy: {
-      '/api': {target:'https://expensetracker-bqa0.onrender.com',
+      '/api': {
+      target:'https://expensetracker-bqa0.onrender.com',
       changeOrigin: true,}
     }
   }
